@@ -1,5 +1,10 @@
 public class Main {
-    public static int fibonachi(int num) {
+    /*
+     * Accepts a number of times the method will iterate through the fibonacci sequence.
+     * @param   int num The number of times the method will iterate through the fibonacci sequence.
+     * @return  int     The final results of the fibonacci sequence.
+     */
+    public static int fibonacci(int num) {
         int firstNum = 0;
         int secondNum = 1;
         int thirdNum = 0;
@@ -12,8 +17,14 @@ public class Main {
         return thirdNum;
     }
 
+    /*
+     * Main class that specifies the number of times the fibonacci sequence will iterate. Calls
+     * the fibonacci method and prints the results.
+     * @param   String[] args
+     * @return  none
+     */
     public static void main(String[] args) {
-        int fibonachiNum = 10;
-        System.out.println("The " + fibonachiNum + "th term of the Fibonacci sequence is " + fibonachi(fibonachiNum) + ".");
+        int fibonacciNum = 10;
+        System.out.println("The " + fibonacciNum + "th term of the Fibonacci sequence is " + fibonacci(fibonacciNum) + ".");
     }
 }
