@@ -1,0 +1,176 @@
+<!--Main page view template. Lets you fill out the StudentID, Month, Day, Year, and message.-->
+
+<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <title>Autumn Skye - CEN 4802C-13189 - Assignment 1</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <!--Style section used for CSS to make the page look prettier. Hopefully it is okay if I do not go into detail for everything!-->
+    <style>
+        /*Applies to everything!*/
+        * {
+            box-sizing: border-box;
+        }
+        /*Applies to the body*/
+        body {
+            font-family: Helvetica, sans-serif;
+            background-color: WhiteSmoke;
+            margin: 0;
+            padding: 0;
+        }
+        /*Main Title*/
+        h1 {
+            font-size: 30px;
+            text-transform: uppercase;
+            font-weight: bold;
+            text-align: center;
+            background: DarkSlateGray;
+            color: AliceBlue;
+            padding: 60px;
+            margin: 0;
+        }
+        /*Text under title*/
+        h3 {
+            color: DarkSlateGray;
+            font-weight: bold;
+            font-style: italic;
+            text-align: center;
+            margin-top: 30px;
+        }
+        /*Rectangle that holds all of the inputs and the buttons*/
+        .form-container {
+            background-color: white;
+            max-width: 500px;
+            margin: 40px auto;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        /*All items that the user needs to enter. Includes the label, and the inputs*/
+        .form-items {
+            margin-bottom: 15px;
+            margin-right: 20px;
+        }
+        /*Used for the title of the user input section*/
+        label {
+            color: DarkSlateGray;
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        /*The main spots the user can input*/
+        input[type="text"], select {
+            width: 100%;
+            padding: 10px;
+            font-size: 14px;
+            border: 1px solid LightSlateGray;
+            margin: 4px;
+            margin-left: 10px;
+            border-radius: 5px;
+        }
+        /*The general placement of the Enter Data and the clear button*/
+        .form-action-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+        /*The base design of both buttons*/
+        input[type="submit"],
+        input[type="reset"] {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        /*The color choices for the enter data button*/
+        input[type="submit"] {
+            background-color: DarkSlateGray;
+            color: white;
+        }
+        /*The color choices for the clear button*/
+        input[type="reset"] {
+            background-color: Maroon;
+            color: white;
+        }
+        /*The design of any validation errors that pop up*/
+        .formError {
+            color: Maroon;
+            font-weight: bold;
+            text-align: center;
+        }
+        /*The hover color for the enter button*/
+        input[type="submit"]:hover {
+            background-color: #437070;
+        }
+        /*The hover color for the clear button*/
+        input[type="reset"]:hover {
+            background-color: #990000;
+        }
+    </style>
+</head>
+<body>
+
+<!--Main Title-->
+<h1>Autumn Skye - CEN 4802C-13189 - Assignment 1</h1>
+<!--Text under the title to tell you what you need to enter.-->
+<h3>Please enter your student ID, a date, and a message below.</h3>
+
+<!--Main form container/rectangle-->
+<div class="form-container">
+    <form action="#" th:action="@{/greeting}" th:object="${greeting}" method="post">
+        <!--This is basically the same as the original template just changed to make it look prettier-->
+        <div class="form-items">
+            <label for="id">Student ID:</label>
+            <input type="text" th:field="*{id}" id="id"/>
+            <div class="formError" th:if="${#fields.hasErrors('id')}" th:errors="*{id}"></div>
+        </div>
+
+        <!--For the most part this is the same as the template but instead of input I used "select" so
+            I could have a drop-down of the months! I just wanted to see if I could do it. It returns the
+            month number to the greeting class.-->
+        <div class="form-items">
+            <label for="month">Month:</label>
+            <select th:field="*{month}" id="month">
+                <option value="0">Select a Month</option>
+                <option value="01">January</option>
+                <option value="02">February</option>
+                <option value="03">March</option>
+                <option value="04">April</option>
+                <option value="05">May</option>
+                <option value="06">June</option>
+                <option value="07">July</option>
+                <option value="08">August</option>
+                <option value="09">September</option>
+                <option value="10">October</option>
+                <option value="11">November</option>
+                <option value="12">December</option>
+            </select>
+            <div class="formError" th:if="${#fields.hasErrors('month')}" th:errors="*{month}"></div>
+        </div>
+
+        <!--This is basically the same as the original template just changed to make it look prettier-->
+        <div class="form-items">
+            <label for="year">Year:</label>
+            <input type="text" th:field="*{year}" id="year"/>
+            <div class="formError" th:if="${#fields.hasErrors('year')}" th:errors="*{year}"></div>
+        </div>
+
+        <!--This is basically the same as the original template just changed to make it look prettier-->
+        <div class="form-items">
+            <label for="content">Message:</label>
+            <input type="text" th:field="*{content}" id="content"/>
+            <div class="formError" th:if="${#fields.hasErrors('content')}" th:errors="*{content}"></div>
+        </div>
+
+        <!--This is basically the same as the original template just changed to make it look prettier-->
+        <div class="form-action-buttons">
+            <input type="submit" value="Enter Data" />
+            <input type="reset" value="Clear" />
+        </div>
+    </form>
+</div>
+
+</body>
+</html>

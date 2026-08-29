@@ -1,0 +1,131 @@
+<!--Results page view template. Returns the StudentID, MM/DD/YYY, and the message.-->
+
+<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <title>Autumn Skye - CEN 4802C-13189: Results</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <!--Style section used for CSS to make the page look prettier. Hopefully it is okay if I do not go into detail for everything!-->
+    <style>
+        /*Applies to the body*/
+        body {
+            font-family: Helvetica, sans-serif;
+            background-color: WhiteSmoke;
+            margin: 0;
+            padding: 0;
+        }
+        /*Main Title*/
+        h1 {
+            font-size: 26px;
+            text-transform: uppercase;
+            font-weight: bold;
+            text-align: center;
+            background: DarkSlateGray;
+            color: AliceBlue;
+            padding: 60px;
+            margin: 0;
+        }
+        /*Text under Title*/
+        h3 {
+            color: DarkSlateGray;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        /*Container/rectangle for all results*/
+        .results-container {
+            background-color: white;
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            line-height: 1.6;
+        }
+        /*The row layout for all results*/
+        .result-rows {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+            margin-left: 20px;
+            margin-right: 20px;
+        }
+        /*the titles of each section*/
+        .result-labels {
+            font-weight: bold;
+            font-size: 16px;
+            color: DarkSlateGray;
+            width: 200px;
+        }
+        /*The values given designed*/
+        .result-values {
+            border: 1px solid DarkSlateGray;
+            padding: 6px 12px;
+            border-radius: 6px;
+            min-width: 300px;
+            text-align: left;
+            font-size: 15px;
+            color: DarkSlateGray;
+        }
+        /*paragraph design*/
+        p {
+            font-weight: bold;
+            margin-bottom: 20px;
+            font-size: 16px;
+        }
+        /*anchor design*/
+        a {
+            display: inline-block;
+            margin-top: 25px;
+            text-decoration: none;
+            color: white;
+            background-color: DarkSlateGray;
+            padding: 10px 20px;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+        /*The enter another message button*/
+        .buttonContainer {
+            text-align: center;
+        }
+        /*The hover color for the submit another message button*/
+        a:hover {
+            background-color: #437070;
+        }
+    </style>
+</head>
+
+<body>
+<!--Main Title-->
+<h1>Autumn Skye - CEN 4802C-13189: Results</h1>
+<!--Text under the title telling you what is below-->
+<h3>Here is the <em>data</em> you entered.</h3>
+
+<!--Main result container/rectangle-->
+<div class="results-container">
+    <!--This is basically the same as the original template just changed to make it look prettier-->
+    <div class="result-rows">
+        <span class="result-labels">Student ID:</span>
+        <span class="result-values" th:text="${greeting.id}"></span>
+    </div>
+
+    <!--This is basically the same as the original template just changed to make it look prettier-->
+    <div class="result-rows">
+        <span class="result-labels">Date:</span>
+        <span class="result-values" th:text="${greeting.month + '/' + greeting.year}"></span>
+    </div>
+
+    <!--This is basically the same as the original template just changed to make it look prettier-->
+    <div class="result-rows">
+        <span class="result-labels">Message:</span>
+        <span class="result-values" th:text="${greeting.content}"></span>
+    </div>
+    <!--This is basically the same as the original template just changed to make it look prettier-->
+    <div class="buttonContainer">
+        <a href="/greeting">Submit another message</a>
+    </div>
+</div>
+
+</body>
+</html>

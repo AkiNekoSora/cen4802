@@ -1,0 +1,73 @@
+<!--Error View Template. Used for the error page. Displays the error message and has a button to go back to the previous page-->
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Autumn Skye - CEN 4802C-13189: Error</title>
+    <!--Style section used for CSS to make the page look prettier. Hopefully it is okay if I do not go into detail for everything!-->
+    <style>
+        /*Applies to body*/
+        body {
+            font-family: Helvetica, sans-serif;
+            background-color: DarkSlateGray;
+            margin: 0;
+            padding: 0;
+        }
+        /*Main Title*/
+        h2 {
+            color: DarkSlateGray;
+            text-transform: uppercase;
+            font-weight: bold;
+            text-align: center;
+            margin-top: 5px;
+        }
+        /*The rectangular container that holds everything*/
+        .error-container {
+            background-color: white;
+            max-width: 500px;
+            margin: 40px auto;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        /*The error message text*/
+        .error-message {
+            font-size: 20px;
+            font-weight: bold;
+            color: Maroon;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        /*The back button design*/
+        .back-button {
+            display: flex;
+            justify-content: center;
+            background-color: Maroon;
+            color: WhiteSmoke;
+            padding: 10px 20px;
+            border-radius: 5px;
+            margin-right: 103px;
+            margin-left: 103px;
+            font-weight: bold;
+            text-decoration: none;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        /*When you hover over the button it changes which I think is cool!*/
+        .back-button:hover {
+            background-color: #b30000;
+        }
+    </style>
+</head>
+<body>
+<!--Main error container/rectangle-->
+<div class="error-container">
+    <!--Main Title-->
+    <h2>Oops! Something went wrong.</h2>
+    <!--Main Error Message. If there is not one given it states "An unexpected error occurred." as a back-up.-->
+    <p class="error-message" th:text="${errorMessage}">An unexpected error occurred.</p>
+    <!--The Back button. The Javascript is used to keep the history and go back so all the items filled out stay!-->
+    <a href="javascript:history.back()" class="back-button">Go Back</a>
+</div>
+</body>
+</html>
