@@ -19,6 +19,12 @@ public class Greeting {
     @Min(value = 1, message = "Student ID is required.")
     private String id;
 
+    //Day errors and variable
+    @NotNull(message = "Day is required.")
+    @Min(value = 1, message = "Please enter a valid day.")
+    @Max(value = 31, message = "Please enter a valid day.")
+    private Integer day;
+
     //Month errors and variable
     @Min(value = 1, message = "Month is required.")
     @Max(value = 12, message = "Please enter a valid Month.")
@@ -43,6 +49,7 @@ public class Greeting {
     public String getId() {
         return id;
     }
+    public Integer getDay() {return day;}
     public Integer getMonth() {return month;}
     public Integer getYear() {return year;}
     public String getContent() {
@@ -56,6 +63,7 @@ public class Greeting {
      * Used to set the values by the program.
      */
     public void setId(String id) {this.id = id;}
+    public void setDay(Integer day) {this.day = day;}
     public void setMonth(Integer month) {this.month = month;}
     public void setYear(Integer year) {this.year = year;}
     public void setContent(String content) {this.content = content;}
