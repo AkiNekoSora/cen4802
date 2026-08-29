@@ -7,7 +7,7 @@ import jakarta.validation.Valid;
 import org.springframework.validation.BindingResult;
 
 import java.time.DateTimeException;
-import java.time.YearMonth;
+import java.time.LocalDate;
 
 
 /* GreetingController Class
@@ -39,9 +39,10 @@ public class GreetingController {
         }
 
         try {
-            YearMonth.of(
+            LocalDate.of(
                     greeting.getYear(),
-                    greeting.getMonth()
+                    greeting.getMonth(),
+                    greeting.getDay()
             );
         } catch (DateTimeException e) {
             throw new IllegalArgumentException("Invalid date provided.");
